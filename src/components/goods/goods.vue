@@ -86,7 +86,8 @@
 		},
 		created () {
 			// '/api/goods'
-			this.$http.get('../../static/data.json').then(response => {
+			// '../../static/data.json'
+			this.$http.get('static/data.json').then(response => {
 				response = response.body;
 				this.goods = response.goods;
 				this.$nextTick(() => {
@@ -98,7 +99,7 @@
 		},
 		methods: {
 			selectMenu (index, event) {
-				if (event._constructed) {
+				if (!event._constructed) {
 					return;
 				}
 				let foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook');

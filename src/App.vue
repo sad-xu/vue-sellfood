@@ -33,7 +33,8 @@
     },
     created () {
       // '/api/seller?id=' + this.seller.id
-      this.$http.get('../static/data.json').then(response => {
+      // this.$http.get('../static/data.json').then(response => {
+      this.$http.get('static/data.json').then(response => {
         response = response.body;
         // this.seller = Object.assign({}, this.seller, response.data);
         this.seller = response.seller;

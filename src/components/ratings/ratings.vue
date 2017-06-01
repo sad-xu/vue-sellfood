@@ -39,7 +39,7 @@
 								<span class="delivery" v-show="rating.deliveryTime">{{rating.deliveryTime}}</span>
 							</div>	
 							<p class="text">{{rating.text}}</p>
-							<div class="recommend" v-show="rating.recommend || rating.recommend.length">
+							<div class="recommend" v-show="rating.recommend.length">
 								<span class="icon-thumb_up"></span>
 								<span v-for="(item,i) in rating.recommend" class="item">{{item}}</span>
 							</div>
@@ -76,7 +76,8 @@
 		},
 		created () {
 			// '/api/ratings'
-			this.$http.get('../../static/data.json').then(response => {
+			// '../../static/data.json'
+			this.$http.get('static/data.json').then(response => {
 				response = response.body;
 				this.ratings = response.ratings;
 				this.$nextTick(() => {
