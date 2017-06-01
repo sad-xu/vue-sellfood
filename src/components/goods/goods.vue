@@ -47,8 +47,6 @@
 	import cartcontrol from '../cartcontrol/cartcontrol.vue';
 	import food from '../food/food.vue';
 
-	const ERR_OK = 0;
-
 	export default {
 		props: {
 			seller: {
@@ -87,15 +85,14 @@
 			}
 		},
 		created () {
-			this.$http.get('/api/goods').then(response => {
+			// '/api/goods'
+			this.$http.get('../../static/data.json').then(response => {
 				response = response.body;
-				if (response.errno === ERR_OK) {
-					this.goods = response.data;
-					this.$nextTick(() => {
-						this._initScroll();
-						this._calculateHeight();
-					});
-				}
+				this.goods = response.goods;
+				this.$nextTick(() => {
+					this._initScroll();
+					this._calculateHeight();
+				});
 			});
 			this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
 		},

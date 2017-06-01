@@ -20,8 +20,6 @@
   import header from './components/header/header.vue';
   import {urlParse} from './common/js/util.js';
 
-  const ERR_OK = 0;
-
   export default {
     data () {
       return {
@@ -34,11 +32,11 @@
       };
     },
     created () {
-      this.$http.get('/api/seller?id=' + this.seller.id).then(response => {
+      // '/api/seller?id=' + this.seller.id
+      this.$http.get('../static/data.json').then(response => {
         response = response.body;
-        if (response.errno === ERR_OK) {
-          this.seller = Object.assign({}, this.seller, response.data);
-        }
+        // this.seller = Object.assign({}, this.seller, response.data);
+        this.seller = response.seller;
       });
     },
     components: {
